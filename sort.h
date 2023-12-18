@@ -31,4 +31,5 @@ void sort_array(int *array, size_t low, size_t high, size_t size);
 void _swap(int array[], size_t size, int *a, int *b);
 void swap(int *a, int *b);
 int partition(int array[], size_t low, size_t high, size_t size);
+void shell_sort(int *array, size_t size);
 #endif
