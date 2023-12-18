@@ -1,6 +1,6 @@
 #include "sort.h"
 
-/*
+/**
  * quick_sort - sorts the array in ascending order
  * using Lomuto's quick sort algorithm
  * @array: the array to be sorted
@@ -12,7 +12,7 @@ void quick_sort(int *array, size_t size)
 		sort_array(array, 0, size - 1, size);
 }
 
-/*
+/**
  * sort_array - sorts the array
  * @array: the array to be sorted
  * @low: the initial index
@@ -38,11 +38,13 @@ void sort_array(int *array, size_t low, size_t high, size_t size)
  * partition - it takes the last item as a pivot
  * and then puts the items greater than it on the right and
  * the ones less than it on the left
+ *
  * @array: the array to be sorted
  * @low: just 0 so that the loop can start from the first
  * to the penultimate item in the array
  * @high: the last item in the array which
  * serves also as a pivot
+ * @size: the size of the array to be sorted
  * Return: the new index of the pivot
  */
 int partition(int array[], size_t low, size_t high, size_t size)
@@ -54,12 +56,20 @@ int partition(int array[], size_t low, size_t high, size_t size)
 	{
 		if (array[j] <= pivot)
 		{
-			swap(&array[i], &array[j]);
+			if (i != j)
+			{
+				swap(&array[i], &array[j]);
+				print_array(array, size);
+			}
 			i++;
 		}
 	}
-	swap(&array[i], &array[high]);
-	print_array(array, size);
+
+	if (i != high)
+	{
+		swap(&array[i], &array[high]);
+		print_array(array, size);
+	}
 	return (i);
 }
 
